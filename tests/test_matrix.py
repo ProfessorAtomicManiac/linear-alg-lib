@@ -27,7 +27,9 @@ linalg.matrix([
 '''
 
 # should work
-linalg.matrix([
+print(linalg.matrix([
     [1, 2, 3],
     [2, 5, 6]
-])
+]))
+
+print([2, 3, 4])
