@@ -5,7 +5,7 @@ class matrix:
     # only 2-dimensional matrices
     def __init__(self, matrix):
         self.matrix = matrix
-        if type(matrix) is not list:
+        if not isinstance(matrix, list):
             raise TypeError('matrix only accepts list type')
         if self.__get_dim(self.matrix) != 2:
             raise TypeError('matrix must have 2 dimensions. It has {} dimension(s)'.format(self.__get_dim(matrix)))
