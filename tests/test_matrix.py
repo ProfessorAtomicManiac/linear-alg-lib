@@ -27,9 +27,10 @@ linalg.matrix([
 '''
 
 # should work
-print(linalg.matrix([
+m = linalg.matrix([
     [1, 2, 3],
     [2, 5, 6]
-]))
-
-print([2, 3, 4])
+])
+print(m * 3)
+print()
+print(2 * m)

@@ -27,3 +27,19 @@ class matrix:
     
     def __str__(self):
         return "\n".join(['[' + ' '.join([str(i) for i in li]) + ']' for li in self.matrix])
+
+    def __mul__(self, right):
+        if type(right) in [float, int]:
+            m = [[i * right for i in li] for li in self.matrix]
+            return matrix(m)
+        else:
+            raise TypeError('Cannot mutiply with {}'.format(str(type(right))))
+        
+    
+    def __rmul__(self, left):
+        if type(left) in [float, int]:
+            m = [[i * left for i in li] for li in self.matrix]
+            return matrix(m)
+        else:
+            raise TypeError('Cannot mutiply with {}'.format(str(type(left))))
+        
