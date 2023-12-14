@@ -32,11 +32,20 @@ m = linalg.matrix([
     [2, 5]
 ])
 n = linalg.matrix([
+    [1, 6]
+])
+k = linalg.matrix([
     [1, 0],
     [-2, 1]
 ])
-print(n * m)
-print(2 * n)
-print(m * 3)
+l = linalg.matrix([
+    [2],
+    [3],
+    [4]
+])
+print(l * n)
+
+#print(2 * n)
+#print(m * 3)
 # shouldn't work
 # print('a' * n)

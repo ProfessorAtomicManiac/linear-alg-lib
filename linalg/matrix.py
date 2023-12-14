@@ -40,6 +40,7 @@ class matrix:
             return matrix(m)
         elif type(right) is matrix:
             if len(self.matrix[0]) != len(right):
+                print(len(self.matrix[0]), len(right))
                 raise TypeError("Cannot multiply this matrix")
             m = []
             for row in range(len(self.matrix)):
