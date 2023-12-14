@@ -28,9 +28,15 @@ linalg.matrix([
 
 # should work
 m = linalg.matrix([
-    [1, 2, 3],
-    [2, 5, 6]
+    [1, 2],
+    [2, 5]
 ])
+n = linalg.matrix([
+    [1, 0],
+    [-2, 1]
+])
+print(n * m)
+print(2 * n)
 print(m * 3)
-print()
-print(2 * m)
+# shouldn't work
+# print('a' * n)
