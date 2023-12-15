@@ -43,8 +43,19 @@ l = linalg.matrix([
     [3],
     [4]
 ])
-print(l * n)
+#print(l * n)
 
+no_perm_factorable = linalg.matrix([
+    [1, 2, 1],
+    [3, 4, 5],
+    [7, 6, 1]
+])
+factors = linalg.lu_factor(
+    no_perm_factorable
+)
+print(factors[0])
+print()
+print(factors[1])
 #print(2 * n)
 #print(m * 3)
 # shouldn't work

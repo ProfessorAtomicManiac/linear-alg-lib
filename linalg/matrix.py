@@ -1,4 +1,4 @@
-from functools import reduce
+from copy import copy
 
 class matrix:    
 
@@ -30,6 +30,9 @@ class matrix:
     
     def __len__(self):
         return len(self.matrix)
+    
+    def __copy__(self):
+        return type(self)(self.matrix)
 
     def __getitem__(self, index):
         return self.matrix[index]
@@ -38,7 +41,7 @@ class matrix:
         if type(right) in [float, int]:
             m = [[i * right for i in li] for li in self.matrix]
             return matrix(m)
-        elif type(right) is matrix:
+        elif isinstance(right, matrix):
             if len(self.matrix[0]) != len(right):
                 raise TypeError("Cannot multiply this matrix")
             m = []
@@ -57,7 +60,7 @@ class matrix:
         if type(left) in [float, int]:
             m = [[i * left for i in li] for li in self.matrix]
             return matrix(m)
-        elif type(left) is matrix:
+        elif isinstance(left, matrix):
             if len(left[0]) != len(self.matrix):
                 raise TypeError("Cannot multiply this matrix")
             m = []
@@ -72,3 +75,27 @@ class matrix:
         else:
             raise TypeError('Cannot mutiply with {}'.format(str(type(left))))
         
+# A = LU, assumes no permutation matrix is needed
+def lu_factor(m):
+    m = copy(m)
+    if not isinstance(m, matrix):
+        raise TypeError('Cannot solve for a non-matrix')
+    L = []
+    for i in range(len(m)):
+        L.append([])
+    # the pivot is the diagonal
+    for dia in range(len(m)):
+        L[dia].append(1)
+        pivot = 1 / m[dia][dia]
+        for lower_row in range(dia + 1, len(m)):
+            factor = pivot * m[lower_row][dia]
+            L[lower_row].append(factor)
+            for col in range(len(m[lower_row])):
+                m[lower_row][col] -= factor * m[dia][col]
+    
+    # filling in the zeros for L
+    for i in range(len(m[0]) - 1):
+        for j in range(len(m[0]) - i - 1):
+            L[i].append(0)
+    print(L)
+    return (matrix(L), m)
