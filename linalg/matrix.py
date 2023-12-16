@@ -77,9 +77,9 @@ class matrix:
         
 # A = LU, assumes no permutation matrix is needed
 def lu_factor(m):
-    m = copy(m)
     if not isinstance(m, matrix):
         raise TypeError('Cannot solve for a non-matrix')
+    m = copy(m)
     L = []
     for i in range(len(m)):
         L.append([])
@@ -97,5 +97,16 @@ def lu_factor(m):
     for i in range(len(m[0]) - 1):
         for j in range(len(m[0]) - i - 1):
             L[i].append(0)
-    print(L)
     return (matrix(L), m)
+
+def transpose(m):
+    if not isinstance(m, matrix):
+        raise TypeError('Cannot solve for a non-matrix')
+    ret = []
+    for i in range(len(m[0])):
+        ret.append([])
+    for col in range(len(m[0])):
+        for row in range(len(m)):
+            ret[col].append(m[row][col])
+    return matrix(ret)
+        

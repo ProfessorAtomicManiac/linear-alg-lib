@@ -53,10 +53,17 @@ no_perm_factorable = linalg.matrix([
 factors = linalg.lu_factor(
     no_perm_factorable
 )
-print(factors[0])
-print()
-print(factors[1])
+#print(factors[0])
+#print()
+#print(factors[1])
 #print(2 * n)
 #print(m * 3)
 # shouldn't work
 # print('a' * n)
+
+foo = linalg.matrix([
+    [1, 3],
+    [2, 3],
+    [4, 1]
+])
+print(linalg.transpose(foo))
